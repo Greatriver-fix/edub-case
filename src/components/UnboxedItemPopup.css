@@ -1,0 +1,131 @@
+/* UnboxedItemPopup.css */
+
+/* Apply base font */
+.popup-overlay, .popup-content {
+  font-family: ArialPixel, system-ui, sans-serif;
+}
+
+.popup-overlay {
+  position: fixed; /* Cover the whole screen */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  z-index: 1000; /* Ensure it's above other content */
+  cursor: pointer; /* Indicate clicking overlay closes it */
+}
+
+.popup-content {
+  background-color: var(--bg); /* Use main theme background */
+  padding: 20px 25px; /* Adjusted padding */
+  border-radius: 0; /* Remove rounded corners for pixel style */
+  /* Apply two-tone border */
+  border: 1px solid;
+  border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Slightly stronger shadow */
+  position: relative; /* For positioning the close button */
+  max-width: 90%; /* Max width relative to viewport */
+  width: 450px; /* Fixed width, adjust as needed */
+  /* Removed max-height and overflow-y: auto to allow content to expand popup */
+  text-align: center; /* Center text content */
+  cursor: default; /* Default cursor for the content area */
+}
+
+.popup-close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2rem; /* Larger close icon */
+  color: var(--text-3); /* Use a slightly dimmer text color for close */
+  cursor: pointer;
+  line-height: 1;
+  /* Add border like other buttons */
+  border: 1px solid;
+  border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg); /* Match background */
+  padding: 0;
+}
+
+.popup-close-button:hover {
+  color: var(--text); /* Use main text color on hover */
+  background-color: var(--secondary-bg); /* Slightly change bg on hover */
+}
+
+.popup-close-button:active {
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark); /* Invert border on click */
+}
+
+
+.popup-title {
+  margin-top: 0; /* Remove default top margin */
+  margin-bottom: 10px; /* Space below title */
+  font-size: 1.3em;
+  color: var(--text); /* Use main theme text color */
+  text-shadow: 1px 1px 0 var(--border-dark); /* Add subtle shadow */
+}
+
+.popup-item-name {
+  font-size: 1.8em; /* Increased from 1.6em */
+  font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 15px; /* Space below name */
+  /* Color is set inline based on item.display_color */
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Added black outline */
+  letter-spacing: 2px; /* Added character spacing */
+}
+
+.popup-item-percentage {
+  font-size: 0.9em;
+  color: var(--secondary-text); /* Or a specific color like #ccc */
+  margin-top: -10px; /* Pull it closer to the name */
+  margin-bottom: 10px;
+}
+
+.popup-item-image {
+  display: block;
+  max-width: 80%; /* Limit image width */
+  max-height: 250px; /* Limit image height */
+  object-fit: contain; /* Scale image while preserving aspect ratio */
+  margin: 15px auto; /* Center image and add vertical space */
+  /* Apply two-tone border */
+  border: 1px solid;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+  background-color: var(--secondary-bg); /* Use secondary bg for image background */
+  border-radius: 0; /* Remove radius */
+  padding: 2px; /* Add small padding inside border */
+}
+
+.popup-item-rules {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+  text-align: left; /* Align rules text left */
+  font-size: 0.9em;
+  color: var(--secondary-text);
+}
+
+.popup-item-rules h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: var(--text); /* Use main theme text color */
+  font-size: 1.5em;
+  text-shadow: 1px 1px 0 var(--border-dark); /* Add subtle shadow */
+}
+
+.popup-item-rules p {
+  margin-bottom: 0;
+  font-size: 1.4em;
+  white-space: pre-wrap; /* Preserve whitespace and wrap text */
+  letter-spacing: 0.5px; 
+}

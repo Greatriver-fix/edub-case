@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Allow: /api/
+Disallow: /uploads/
+Sitemap: https://erobb221.live/sitemap.xml

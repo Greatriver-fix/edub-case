@@ -1,0 +1,70 @@
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 10px 0;
+    max-height: 500px; /* Or any desired height */
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.template-grid-item {
+    border: 1px solid var(--border-color-2);
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: var(--background-color-2); /* Slightly different background */
+}
+
+.template-grid-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain; /* Use contain to see the whole image */
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color-3); /* Background for image area */
+}
+
+.template-grid-item .placeholder-image {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-color-3);
+    color: var(--secondary-text);
+    border: 1px solid var(--border-color);
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.template-grid-item strong {
+    font-size: 1em;
+    margin-bottom: 5px;
+    word-break: break-word;
+}
+
+.template-grid-item .template-id {
+    font-size: 0.8em;
+    color: var(--secondary-text);
+    margin-bottom: 10px;
+}
+
+.template-grid-item .actions {
+    margin-top: auto; /* Pushes buttons to the bottom */
+    display: flex;
+    gap: 8px;
+    width: 100%; /* Make actions take full width for better button spacing */
+    justify-content: center;
+}
+
+.template-grid-item .actions button {
+    flex-grow: 1; /* Allow buttons to grow and share space */
+    padding: 6px 10px; /* Adjust padding for smaller buttons */
+    font-size: 0.9em;
+}

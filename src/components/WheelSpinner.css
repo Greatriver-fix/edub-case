@@ -1,0 +1,129 @@
+/* Styles for WheelSpinner component */
+.wheel-spinner-container {
+  /* Container for the whole spinner section */
+  padding-bottom: 20px; /* Add some space below */
+}
+
+.wheel-visual-container {
+  position: relative;
+  width: 600px; /* Match JS constant */
+  height: 600px; /* Match JS constant */
+  margin: 30px auto;
+  /* overflow: hidden; */ /* Allow marker to potentially sit slightly outside */
+}
+
+.wheel-marker {
+  position: absolute;
+  top: -5px; /* Position slightly outside the top edge */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally (removed rotation) */
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent; /* Triangle shape pointing down */
+  border-right: 15px solid transparent;
+  border-top: 20px solid var(--accent); /* Changed border-bottom to border-top */
+  z-index: 2; /* Ensure marker is above the wheel */
+  /* Add CS 1.6 style border/outline - Adjust shadow for top position */
+  filter: drop-shadow(1px -1px 0 var(--border-dark)) /* Top-right (less relevant) */
+          drop-shadow(1px 1px 0 var(--border-dark)) /* Bottom-right */
+          drop-shadow(-1px 1px 0 var(--border-dark)) /* Bottom-left */
+          drop-shadow(-1px -1px 0 var(--border-dark)); /* Top-left (less relevant) */
+}
+
+.wheel-graphic {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid var(--border-dark);
+  box-shadow: inset 0 0 0 3px var(--border-light),
+              0 0 10px rgba(0, 0, 0, 0.5);
+  /* background is now handled by segments */
+  will-change: transform;
+  position: relative;
+  overflow: hidden; /* Clip contents to the circle */
+  background-color: var(--secondary-bg); /* Base background */
+}
+
+/* Style for the image in the center of the wheel */
+.wheel-center-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 170px; /* Increased size slightly */
+  height: 170px; /* Increased size slightly */
+  border-radius: 50%; /* Make it circular */
+  object-fit: cover; /* Fill the container, may crop */
+  z-index: 1; /* Above wheel graphic, below marker and text */
+  border: 3px solid var(--border-dark); /* Match wheel border */
+  box-shadow: inset 0 0 0 3px var(--border-light), /* Match wheel inset shadow */
+              0 0 8px rgba(0, 0, 0, 0.4); /* Slightly softer outer shadow */
+  background-color: var(--secondary-bg); /* Background if image fails */
+  /* pointer-events: none; */ /* REMOVED - Allow clicks on center image */
+}
+
+/* Removed the radial overlay */
+
+/* Removed the radial lines */
+
+/* Remove old/unused segment styles */
+/* .wheel-segment { ... } */
+/* .segment-content { ... } */
+/* .segment-image { ... } */
+/* .wheel-background-segments { ... } */
+/* .wheel-bg-segment { ... } */
+
+
+/* Style for the container holding item texts */
+.wheel-item-texts {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* This layer rotates with the main wheel */
+    z-index: 3; /* Ensure text is above the border lines */
+}
+
+/* Style for individual text items */
+.wheel-item-text {
+    /* Position and rotation applied inline via getItemStyle */
+    font-family: ArialPixel, system-ui, sans-serif;
+    color: var(--text);
+    text-shadow: 1px 1px 0 var(--border-dark);
+    white-space: nowrap; /* Prevent wrapping */
+    z-index: 3; /* Ensure text is above the border lines */
+}
+
+.segment-name {
+  /* Styles for the inner span containing the text */
+  display: inline-block; /* Needed for padding */
+  padding: 3px 6px;
+  /* background-color: rgba(0, 0, 0, 0.8); */ /* Darker background for better readability - REMOVED */
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 1.2em; /* Further increased font size */
+  /* Color is applied inline based on item.color */
+  word-break: keep-all; /* Prevent breaking words */
+  line-height: 1.1;
+  /* Ensure text shadow is still visible - Use multiple shadows for outline */
+  text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000; /* 1px black outline */
+  z-index: 3; /* Ensure text is above the border lines */
+  /* border: 1px solid rgba(255, 255, 255, 0.3); */ /* Slightly more visible border - REMOVED */
+  max-width: 120px; /* Further increased max-width */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Add a subtle glow effect to make text stand out more */
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+  letter-spacing: 0.1em; /* Add slight spacing between characters */
+}
+
+
+.won-item-details {
+    /* Styles for the won item display area - can reuse styles from CaseOpener if needed */
+    text-align: center;
+}
+
+/* Reuse case selection grid styles from CaseOpener.css */
+/* No need to redefine if they are globally available or imported */
