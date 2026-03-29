@@ -26,7 +26,6 @@ I left the live runtime files in here on purpose so the next person can boot it 
 - Admin password hashing: `bcrypt`
 - Process manager in production: PM2 config included in `ecosystem.config.cjs`
 
-If someone asks "what framework is this?", the honest answer is:
 
 - frontend is a custom Bun + React app
 - backend is a small Hono server
@@ -71,11 +70,6 @@ bun install
 cp .env.example .env
 ```
 
-On Windows PowerShell:
-
-```powershell
-Copy-Item .env.example .env
-```
 
 3. Set any env values you want to override.
 
@@ -143,8 +137,7 @@ bun run start:backend
 
 There is also a PM2 config in `ecosystem.config.cjs` if you want to run the backend that way.
 
-## A few practical notes for the next dev
-
+## A few practical notes
 - Most of the app logic is pretty direct. If you want to understand the whole thing quickly, start with:
   - `src/components/App.tsx`
   - `server/index.ts`
