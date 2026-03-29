@@ -1,6 +1,6 @@
 # Erobb Case Opener
 
-Source for the Erobb case-opening site. This repo is set up for source control handoff, so live runtime data stays out of git.
+Source for the Erobb case-opening site. This repo currently includes the live runtime snapshot, including the SQLite database and uploaded assets.
 
 ## Requirements
 
@@ -16,14 +16,13 @@ bun install
 
 2. Copy `.env.example` to `.env` and fill in any values you need.
 
-3. Optional: restore runtime data if you want the existing content.
+3. The current repo snapshot already includes:
 
-Runtime data is intentionally excluded from source control:
 - `database.sqlite*`
 - `uploads/`
 - `DBBackups/`
 
-If you do not restore a database, the backend will create a new empty SQLite database on first start and create empty upload folders automatically.
+If you remove the runtime data later, the backend will create a new empty SQLite database on first start and create empty upload folders automatically.
 
 ## Commands
 

@@ -33,17 +33,9 @@ vps.md
 # Finder (MacOS) folder config
 .DS_Store
 
-# User Uploads
-/uploads/
-/DBBackups/
-
 # Cline Rules (Local config)
 /.clinerules/
 /.clinerules
 ethor.md
-# Database Files
-/database.sqlite*
-database.sqlite-shm
-database.sqlite-wal
 
 CLAUDE.md
