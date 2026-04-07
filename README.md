@@ -116,8 +116,10 @@ If you want both at once:
 bun run dev
 ```
 
-Frontend dev server runs from `src/index.tsx`.
+Frontend dev server runs from `public/index.html`.
+Frontend dev uses port `3002`.
 Backend entry point is `server/index.ts`.
+`bun run dev` starts the backend first and then starts the frontend after the API is responding on `3001`.
 
 ## Production-ish build
 

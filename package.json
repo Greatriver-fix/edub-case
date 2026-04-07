@@ -10,9 +10,9 @@
     "typescript": "^5.8.3"
   },
   "scripts": {
-    "dev:frontend": "NODE_ENV=development bun run --hot src/index.tsx",
+    "dev:frontend": "NODE_ENV=development bun --port 3002 --hot public/index.html",
     "dev:backend": "NODE_ENV=development bun run server/index.ts",
-    "dev": "concurrently \"bun run dev:frontend\" \"bun run dev:backend\"",
+    "dev": "bun run scripts/dev.ts",
     "build": "NODE_ENV=production bun run scripts/build-frontend.ts",
     "start:backend": "NODE_ENV=production bun run server/index.ts",
     "hash:admin": "bun run generate-hash.ts"

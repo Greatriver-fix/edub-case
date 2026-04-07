@@ -3,7 +3,7 @@ import { cors } from 'hono/cors';
 import { logger } from 'hono/logger'; // Re-import the default logger
 import { serveStatic } from 'hono/bun'; // Import serveStatic for serving files
 import { db } from './db'; // Import the initialized db instance
-import { CORS_ORIGINS } from './constants';
+import { isAllowedCorsOrigin } from './constants';
 
 // Import route handlers
 import itemTemplatesApp from './routes/itemTemplates';
@@ -20,7 +20,13 @@ app.use('*', logger());
 
 // CORS for API routes - Apply to all /api/* paths
 app.use('/api/*', cors({
-  origin: CORS_ORIGINS,
+  origin: (origin) => {
+    if (!origin) {
+      return null;
+    }
+
+    return isAllowedCorsOrigin(origin) ? origin : null;
+  },
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowHeaders: ['Content-Type', 'Authorization'], // Content-Type might be multipart/form-data now
 }));

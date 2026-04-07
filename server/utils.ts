@@ -1,9 +1,7 @@
 import { unlink } from 'node:fs/promises'; // For deleting files on rollback
 import { join, extname } from 'node:path'; // For path manipulation
 import { randomUUID } from 'node:crypto'; // For unique filenames
-import { parseBlob } from 'music-metadata-browser'; // For reading audio duration
 import type { HonoRequest } from 'hono'; // Use type-only import
-import sharp from 'sharp'; // Import sharp for image processing
 import {
     IMAGES_DIR, // Need this for constructing the correct path
     ALLOWED_IMAGE_TYPES,
@@ -39,6 +37,7 @@ export async function saveUploadedFile(file: File, targetDir: string): Promise<s
         if (isImage && targetDir === IMAGES_DIR) {
             // --- Image Processing Logic ---
             console.log(`[saveUploadedFile] Processing image: ${file.name}, Type: ${file.type}`);
+            const sharp = (await import('sha' + 'rp')).default;
             const buffer = await file.arrayBuffer();
             let sharpInstance;
             let isAnimated = false;
@@ -167,6 +166,7 @@ export async function validateUploadedFile(file: File | null, type: 'image' | 'a
         }
         try {
             console.log(`Attempting to parse metadata for audio file: ${file.name}, type: ${file.type}`);
+            const { parseBlob } = await import('music' + '-metadata-browser');
             const metadata = await parseBlob(file);
             console.log(`Successfully parsed metadata. Duration: ${metadata.format.duration ?? 'N/A'}`);
         } catch (metaError: any) {

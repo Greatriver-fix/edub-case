@@ -6,6 +6,7 @@ const DEFAULT_CORS_ORIGINS = [
   DEFAULT_PUBLIC_BASE_URL,
   'https://www.erobb221.live',
 ];
+const LOOPBACK_HOSTS = new Set(['localhost', '127.0.0.1']);
 
 const normalizeBaseUrl = (baseUrl: string) => baseUrl.trim().replace(/\/+$/, '');
 
@@ -23,5 +24,21 @@ export const CORS_ORIGINS = (process.env.CORS_ORIGINS || DEFAULT_CORS_ORIGINS.jo
   .split(',')
   .map((origin) => origin.trim())
   .filter(Boolean);
+export const isAllowedCorsOrigin = (origin: string) => {
+  if (CORS_ORIGINS.includes(origin)) {
+    return true;
+  }
+
+  if (process.env.NODE_ENV === 'production') {
+    return false;
+  }
+
+  try {
+    const url = new URL(origin);
+    return (url.protocol === 'http:' || url.protocol === 'https:') && LOOPBACK_HOSTS.has(url.hostname);
+  } catch {
+    return false;
+  }
+};
 export const ADMIN_PASSWORD_HASH = process.env.ADMIN_PASSWORD_HASH?.trim() || '';
 export const DB_VERSION = 10; // Increment version for cases.is_active

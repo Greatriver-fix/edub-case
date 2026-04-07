@@ -10,7 +10,7 @@ const rewriteIndexHtml = async () => {
   const indexHtmlPath = path.join(buildDir, 'index.html');
   const indexHtml = await readFile(indexHtmlPath, 'utf8');
   const updatedHtml = indexHtml
-    .replace('href="/style.css"', `href="/index.css?v=${version}"`)
+    .replace('</head>', `  <link rel="stylesheet" href="/index.css?v=${version}">\n</head>`)
     .replace('src="/src/index.tsx"', `src="/index.js?v=${version}"`);
 
   await writeFile(indexHtmlPath, updatedHtml);
